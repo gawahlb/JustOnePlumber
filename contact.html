@@ -15,6 +15,9 @@
             <link rel="icon" type="image/png" sizes="16x16" href="#">
             <link rel="icon" href="images/favicon.PNG">
             <script src="js/main.js" defer></script>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Saira+Stencil+One&display=swap" rel="stylesheet">
     </head>
 
 <body>
@@ -23,27 +26,39 @@
             <img src="images/Justone.PNG" alt="Just One Logo">
         </a>
     </header>
-
-    <a href="index.html">
-        <button>Home</button>
-    </a>
-
+    <main>
+        <h1>Juan Ramirez</h1>
+        <table class="contact-info">
+            <tbody>
+                <tr>
+                    <td>Phone:</td>
+                    <td><a href="tel:623-385-6301">623-385-6301</a></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><a href="#">email@email.com</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="index.html" class="home-button2">
+            <h3>Return Home</h3>
+        </a>
+    </main>
     <footer>
-        <div>
-            <p>Just One Plumber</p>
-            <p>Serving the Arizona Valley</p>
-            <p>623-385-6301</p>
-        </div>
-        <div class="social">
-            <a href="https://www.linkedin.com" target="_blank"><img src="images/linkedin.svg" alt="linkedin link" width="16" height="16"></a>
-            <a href="https://www.instagram.com" target="_blank"><img src="images/instagram.svg" alt="instagram link" width="16" height="16"></a>
-        </div>
-        <div>
-            
-            <p>Juan Ramierez</p>
-            <p>&copy; <span id="currentYear"></span> | Just One Plumber</p>
-            <p id="lastModified"></p>
-        </div>
-    </footer>
+            <div class="footer-left">
+                <p>Just One Plumber, LLC</p>
+                <p>Serving the Valley</p>
+                <a href="tel:623-385-6301">
+                    <p>623-385-6301</p>
+                </a>
+            </div>
+            <div class="footer-right">
+                <!-- <a href="https://www.linkedin.com" target="_blank" class="linkedin"><img src="images/linkedin.svg" alt="linkedin link" class="linkedin"></a>
+                <a href="https://www.instagram.com" target="_blank" class="instagram"><img src="images/instagram.svg" alt="instagram link" class="instagram"></a> -->
+                <p>Juan Ramirez</p>
+                <p>&copy; <span id="currentYear"></span> | Just One Plumber, LLC</p>
+                <p id="lastModified"></p>
+            </div>
+        </footer>
 </body>
 </html>
