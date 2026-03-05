@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     showReview();
 
-    setInterval(nextReview, 5000);
+    setInterval(nextReview, 12000);
 
 
 });
