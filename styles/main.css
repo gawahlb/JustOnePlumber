@@ -29,23 +29,24 @@
 html, body {
     overflow-x: visible;
     margin: auto;
-    margin-bottom: 0;
 }
 
 html {
     max-width: 100%;
     margin: 0;
+    height: 100%;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
     display: grid;
-    grid-template-rows: 1fr 1fr 100px;
+    grid-template-rows: 1fr 1fr 1fr .15fr;
     grid-template-columns: 1fr 3fr;
     height: 100%;
     text-align: center;
     font-size: 30px;
     max-width: 1500px;
+    min-height: 100%;
 }
 
 .main-description {
@@ -67,8 +68,12 @@ body {
     color: blue;
 }
 
+.description2 {
+    margin-top: 50px;
+}
+
 footer {
-    grid-row: 3/4;
+    grid-row: 4/5;
     grid-column: 1/3;
     font-size: 20px;
     display: flex;
@@ -76,6 +81,11 @@ footer {
     background-color: rgb(63, 63, 217);
     color: white;
     margin-bottom: 0;
+}
+
+.footer-left a {
+    text-decoration: none;
+    color: white;
 }
 
 .footer-right {
@@ -106,7 +116,7 @@ footer {
 /* bruh*/
 /* Reviews Carousel */
 .reviews {
-    grid-row: 2/3;
+    grid-row: 3/4;
     grid-column: 1/3;
     margin: 20px auto;
     padding: 20px;
@@ -171,7 +181,7 @@ footer {
         margin: 0;
         display: flex;
         flex-direction: column;
-        min-height: 100vw;
+        min-height: 100vh;
     }
 
     .main-description, .description2 {
