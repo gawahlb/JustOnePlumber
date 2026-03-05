@@ -1,5 +1,5 @@
 .logo {
-    height: 600px;
+    height: 500px;
     transition: transform 0.5s ease;
     z-index: -1;
 }
@@ -30,7 +30,11 @@ html, body {
     overflow-x: visible;
     margin: auto;
     margin-bottom: 0;
-    max-width: 1800px;
+}
+
+html {
+    max-width: 100%;
+    margin: 0;
 }
 
 body {
@@ -41,6 +45,7 @@ body {
     height: 100%;
     text-align: center;
     font-size: 30px;
+    max-width: 1500px;
 }
 
 .main-description {
@@ -112,11 +117,6 @@ footer {
 
     .contact-section {
         margin-top: 0;
-    }
-
-    main {
-        display: inline-block;
-        flex: 1;
     }
 
     body {
