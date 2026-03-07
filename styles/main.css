@@ -346,6 +346,43 @@ main {
     margin-top: 40px;
 }
 
+/*NOT SURE IF THIS WILL HELP THE HEADER*/
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    grid-row: 1 / 2;
+    width: 100%;
+}
+
+.logo-link {
+    text-decoration: none;
+}
+
+.logo {
+    height: 250px;
+    width: auto;
+    display: block;
+}
+
+.top-nav {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: black;
+    font-size: 22px;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.nav-link:hover {
+    background-color: rgb(221, 221, 221);
+}
 @media (max-width: 1200px) {
     html, body {
         overflow-x: clip;
