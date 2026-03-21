@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         if (text && author) {
             text.textContent = reviews[reviewIndex].text;
-            author.textContent = reviews[reviewIndex].author;
+            author.innerHTML = `<img src="images/google.svg" alt="Google" class="review-icon">  - ${reviews[reviewIndex].author}`;
         }
     }
 
