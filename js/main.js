@@ -54,7 +54,14 @@ const faqQuestions = document.querySelectorAll(".faq-question");
 faqQuestions.forEach(function(question) {
     question.addEventListener("click", function() {
         const answer = this.nextElementSibling;
+        this.classList.toggle("active");
         answer.classList.toggle("show");
+
+        if (answer.classList.contains("show")) {
+            answer.style.maxHeight = answer.scrollHeight + "px";
+        } else {
+            answer.style.maxHeight = "0";
+        }
     });
 });
 });
