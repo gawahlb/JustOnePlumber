@@ -895,7 +895,81 @@ main {
     margin: 30px auto 80px auto;
     text-align: center;
 }
+.service-reveal-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
 
+.service-reveal-card h2 {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    margin: 0;
+    color: white;
+    z-index: 2;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.service-reveal-card img {
+    filter: brightness(70%);
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.service-reveal-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(245, 245, 245, 0.96);
+    padding: 20px;
+    text-align: left;
+    transform: translateY(100%);
+    transition: transform 0.35s ease;
+    z-index: 3;
+}
+
+.service-reveal-text p {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 17px;
+    line-height: 1.5;
+    color: black;
+}
+
+.service-reveal-card:hover .service-reveal-text {
+    transform: translateY(0);
+}
+
+.service-reveal-card:hover img {
+    transform: scale(1.05);
+    filter: brightness(50%);
+}
+
+.service-reveal-card.active .service-reveal-text {
+    transform: translateY(0);
+}
+
+.service-reveal-card.active img {
+    filter: brightness(50%);
+}
+
+@media (max-width: 800px) {
+    .service-reveal-card h2 {
+        font-size: 34px;
+    }
+
+    .service-reveal-text {
+        transform: translateY(0);
+        position: static;
+        background-color: rgb(245, 245, 245);
+    }
+
+    .service-reveal-card img {
+        filter: brightness(65%);
+    }
+}
 @media (max-width: 800px) {
     .contact-two-column {
         grid-template-columns: 1fr;

@@ -90,4 +90,5 @@ document.addEventListener('click', function(event) {
             menu.style.maxHeight = null;
         }
     }
+    
 });
