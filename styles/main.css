@@ -262,8 +262,27 @@ main {
     grid-column: 2/3;
     grid-row: 2/3;
     text-align: center;
+    
+}
+.name {
+    grid-column: 1/3;
+    grid-row: 2/3;
+    text-align: center;
+    font-family: 'Saira Stencil One', sans-serif;
+    font-size: 40px;
+    position: relative;
+    padding-bottom: 14px;
+    margin-bottom: 20px;
 }
 
+.name::after {
+    content: "";
+    display: block;
+    width: 55%;
+    height: 13px;
+    background-color: rgb(63, 63, 217);
+    margin: 8px auto 0 auto;
+}
 .contact-box {
     padding: 20px;
     width: 100%;
@@ -319,7 +338,12 @@ main {
     font-size: 20px;
     line-height: 1.5;
 }
-
+.services-subtext {
+    max-width: 750px;
+    margin: 0 auto 25px auto;
+    font-size: 18px;
+    line-height: 1.5;
+}
 .services-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -331,6 +355,7 @@ main {
 .service-card {
     background-color: rgb(245, 245, 245);
     border: 1px solid black;
+    border-top: 6px solid rgb(63, 63, 217);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 5px 5px 5px gray;
@@ -361,7 +386,20 @@ main {
     line-height: 1.5;
     margin-bottom: 20px;
 }
+.services-extra {
+    max-width: 900px;
+    margin: 40px auto 20px auto;
+    padding: 25px;
+    background-color: rgb(245, 245, 245);
+    border-left: 8px solid rgb(63, 63, 217);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px gray;
+}
 
+.services-extra h2 {
+    margin-top: 0;
+    font-size: 28px;
+}
 .service-button,
 .services-home-button {
     display: inline-block;
@@ -583,7 +621,105 @@ main {
         font-size: 18px;
     }
 }
+/* Contact page new layout */
+.contact-page-layout {
+    grid-column: 1 / 3;
+}
 
+.contact-two-column {
+    grid-column: 1 / 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 1100px;
+    margin: 30px auto;
+    align-items: stretch;
+    padding: 0 20px;
+}
+
+.contact-welcome-box {
+    background-color: rgb(245, 245, 245);
+    border-left: 8px solid rgb(63, 63, 217);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px gray;
+    padding: 25px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-welcome-box h2 {
+    margin-top: 0;
+    font-size: 30px;
+}
+
+.contact-welcome-box p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.contact-info-box {
+    grid-column: auto;
+    grid-row: auto;
+    display: table;
+    margin: 20px 0 0 0;
+    text-align: left;
+    font-size: 20px;
+}
+
+.contact-info-box td {
+    padding: 10px 10px 10px 0;
+}
+
+.contact-info-box a {
+    text-decoration: none;
+}
+
+.contact-two-column .contact-box {
+    grid-column: auto;
+    width: 100%;
+    max-width: 500px;
+    justify-self: stretch;
+    align-self: stretch;
+}
+
+.contact-bottom-image-section {
+    grid-column: 1 / 3;
+    max-width: 1100px;
+    margin: 10px auto 30px auto;
+    padding: 0 20px;
+}
+
+.contact-bottom-image {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 5px 5px 10px gray;
+    display: block;
+}
+
+.contact-return-button {
+    display: block;
+    margin: 30px auto 80px auto;
+    text-align: center;
+}
+
+@media (max-width: 800px) {
+    .contact-two-column {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-two-column .contact-box {
+        max-width: 100%;
+    }
+
+    .contact-bottom-image {
+        height: 200px;
+    }
+}
 
 @media (max-width: 800px) {
     html, body {
@@ -724,11 +860,13 @@ main {
         align-self: center;
     }
 
-    .contact-box {
-        width: 100px;
-        min-width: 300px;
-        align-self: center;
-    }
+   .contact-box {
+    width: 100%;
+    max-width: 500px;
+    min-width: 0;
+    align-self: center;
+    box-sizing: border-box;
+}
 
     .contact-info a {
         text-decoration: none;
@@ -766,4 +904,5 @@ main {
 .services-home-button {
     font-size: 20px;
 }
+
 }
