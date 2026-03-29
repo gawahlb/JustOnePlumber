@@ -302,6 +302,7 @@ main {
     box-shadow: 5px 5px 5px gray;
     grid-column: 1/3;
     justify-self: center;
+    margin-bottom: 30px;
 }
 
 .contact-box form {
@@ -1358,7 +1359,7 @@ main {
     }
 
     .contact-info {
-        font-size: 30px;
+        font-size: 15px;
         margin: 20px 15px 50px 15px;
         text-align: left;
         align-self: center;
@@ -1374,6 +1375,12 @@ main {
 
     .contact-info a {
         text-decoration: none;
+    }
+
+    .contact-body {
+        display: flex;
+        flex-direction: column;
+        max-width: 100vw;
     }
 
     .services-home-button {
@@ -1407,6 +1414,14 @@ main {
 .service-button,
 .services-home-button {
     font-size: 20px;
+}
+
+.contact-two-column {
+    max-width: 80%;
+    width: 80% !important;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 }
