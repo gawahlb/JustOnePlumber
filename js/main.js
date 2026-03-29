@@ -4,67 +4,113 @@ document.addEventListener('DOMContentLoaded', (event) => {
         yearSpan.textContent = new Date().getFullYear();
     }
 
-// reviews
+    // reviews
     const reviews = [
         {
             text: "Juan is the most professional and knowledgeable plumber I’ve ever had do work for me. He answered all my questions without hesitation and was extremely clean with his work. I will be recommending Juan to all my friends.",
-            author: "⭐⭐⭐⭐⭐- Doug W."
+            author: "Doug W."
         },
         {
-            text: "Juan came by to replace my shower cartridge. He did an excellent, quick job and made sure everything was in perfect working condition before he left. I definitely look forward to having him as a plumber in the future",
-            author: "⭐⭐⭐⭐⭐- Juliana J."
+            text: "Juan came by to replace my shower cartridge. He did an excellent, quick job and made sure everything was in perfect working condition before he left. I definitely look forward to having him as a plumber in the future.",
+            author: "Juliana J."
         },
         {
-            text: "Juan was an amazing person/plumber he knew what he was doing and cleaned up left no mess It looked like he was never here.",
-            author: "⭐⭐⭐⭐⭐- Anthony"
+            text: "Juan was an amazing person and plumber. He knew what he was doing and cleaned up everything so well it looked like he was never here.",
+            author: "Anthony"
         },
         {
-            text: "Words cannot describe how kind and helpful, Juan has been. We had some repairs done to our bathroom incorrectly by a restoration company and had to have it repaired. Juan came out right away and worked with us to ensure the restoration company corrected their mistakes. Juan was always available for questions and truly advocated for us. I cannot say enough about how grateful we are for this company. I highly recommend them and will use them for future work..",
-            author: "⭐⭐⭐⭐⭐- Cynthia D."
+            text: "Words cannot describe how kind and helpful Juan has been. Juan was always available for questions and truly advocated for us. I cannot say enough about how grateful we are for this company. I highly recommend them and will use them for future work.",
+            author: "Cynthia D."
         }
     ];
 
     let reviewIndex = 0;
+    let reviewTimer;
 
-    function showReview() {
+    function showReview(index) {
         const text = document.getElementById("reviewText");
         const author = document.getElementById("reviewAuthor");
+        const dots = document.querySelectorAll(".review-dot");
 
         if (text && author) {
-            text.textContent = reviews[reviewIndex].text;
-            author.innerHTML = `<img src="images/google.svg" alt="Google" class="review-icon">  - ${reviews[reviewIndex].author}`;
+            text.textContent = reviews[index].text;
+            author.innerHTML = `<img src="images/google.svg" alt="Google" class="review-icon"> ${reviews[index].author}`;
         }
+
+        dots.forEach(function(dot, i) {
+            dot.classList.toggle("active-dot", i === index);
+        });
     }
 
     function nextReview() {
         reviewIndex++;
-
         if (reviewIndex >= reviews.length) {
             reviewIndex = 0;
         }
-
-        showReview();
+        showReview(reviewIndex);
     }
 
-    showReview();
-
-    setInterval(nextReview, 12000);
-
-const faqQuestions = document.querySelectorAll(".faq-question");
-
-faqQuestions.forEach(function(question) {
-    question.addEventListener("click", function() {
-        const answer = this.nextElementSibling;
-        this.classList.toggle("active");
-        answer.classList.toggle("show");
-
-        if (answer.classList.contains("show")) {
-            answer.style.maxHeight = answer.scrollHeight + "px";
-        } else {
-            answer.style.maxHeight = "0";
+    function prevReview() {
+        reviewIndex--;
+        if (reviewIndex < 0) {
+            reviewIndex = reviews.length - 1;
         }
+        showReview(reviewIndex);
+    }
+
+    function startReviewTimer() {
+        reviewTimer = setInterval(nextReview, 7000);
+    }
+
+    function resetReviewTimer() {
+        clearInterval(reviewTimer);
+        startReviewTimer();
+    }
+
+    showReview(reviewIndex);
+    startReviewTimer();
+
+    const nextBtn = document.getElementById("nextReview");
+    const prevBtn = document.getElementById("prevReview");
+    const dots = document.querySelectorAll(".review-dot");
+
+    if (nextBtn) {
+        nextBtn.addEventListener("click", function() {
+            nextReview();
+            resetReviewTimer();
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener("click", function() {
+            prevReview();
+            resetReviewTimer();
+        });
+    }
+
+    dots.forEach(function(dot) {
+        dot.addEventListener("click", function() {
+            reviewIndex = Number(dot.dataset.index);
+            showReview(reviewIndex);
+            resetReviewTimer();
+        });
     });
-});
+
+    const faqQuestions = document.querySelectorAll(".faq-question");
+
+    faqQuestions.forEach(function(question) {
+        question.addEventListener("click", function() {
+            const answer = this.nextElementSibling;
+            this.classList.toggle("active");
+            answer.classList.toggle("show");
+
+            if (answer.classList.contains("show")) {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            } else {
+                answer.style.maxHeight = "0";
+            }
+        });
+    });
 });
 
 function hMenu() {
@@ -79,16 +125,11 @@ document.addEventListener('click', function(event) {
     const icon = document.getElementById("hamburger-icon");
     const navContainer = document.querySelector(".navbar");
 
-    
     if (menu && menu.classList.contains("open")) {
-        
         if (!navContainer.contains(event.target)) {
-            
             menu.classList.remove("open");
             icon.classList.remove("open");
-            
             menu.style.maxHeight = null;
         }
     }
-    
 });
