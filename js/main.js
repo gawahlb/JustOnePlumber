@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
+
 // reviews
     const reviews = [
         {
@@ -64,4 +65,29 @@ faqQuestions.forEach(function(question) {
         }
     });
 });
+});
+
+function hMenu() {
+    var x = document.getElementById("links");
+    var icon = document.getElementById("hamburger-icon");
+    x.classList.toggle("open");
+    icon.classList.toggle("open");
+};
+
+document.addEventListener('click', function(event) {
+    const menu = document.getElementById("links");
+    const icon = document.getElementById("hamburger-icon");
+    const navContainer = document.querySelector(".navbar");
+
+    
+    if (menu && menu.classList.contains("open")) {
+        
+        if (!navContainer.contains(event.target)) {
+            
+            menu.classList.remove("open");
+            icon.classList.remove("open");
+            
+            menu.style.maxHeight = null;
+        }
+    }
 });
