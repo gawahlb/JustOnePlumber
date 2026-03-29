@@ -132,4 +132,28 @@ document.addEventListener('click', function(event) {
             menu.style.maxHeight = null;
         }
     }
+    const heroButtons = document.querySelectorAll(".hero-button");
+
+heroButtons.forEach(function(button) {
+    button.addEventListener("click", function(e) {
+        const ripple = document.createElement("span");
+        ripple.classList.add("ripple");
+
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+
+        ripple.style.width = size + "px";
+        ripple.style.height = size + "px";
+        ripple.style.left = x + "px";
+        ripple.style.top = y + "px";
+
+        button.appendChild(ripple);
+
+        setTimeout(function() {
+            ripple.remove();
+        }, 600);
+    });
+});
 });
