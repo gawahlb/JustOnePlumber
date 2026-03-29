@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Build Plumbing | Just One Plumber</title>
+  <meta name="description" content="Creating your dream home? Just One Plumber provides professional new build plumbing from planning to final fixture installation." />
+  <link rel="icon" href="images/favicon.PNG" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Saira+Stencil+One&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050505;
+      --panel: #111111;
+      --panel-2: #171717;
+      --line: #2b2b2b;
+      --text: #f5f5f5;
+      --muted: #c6c6c6;
+      --blue: rgb(63, 63, 217);
+      --blue-dark: rgb(35, 35, 155);
+      --glow: rgba(85, 85, 255, 0.35);
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(70, 70, 255, 0.13), transparent 25%),
+        radial-gradient(circle at bottom left, rgba(70, 70, 255, 0.10), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background-color: rgba(5, 5, 5, 0.82);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand img {
+      height: 72px;
+      width: auto;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-text strong {
+      font-family: 'Saira Stencil One', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 1px;
+    }
+
+    .brand-text span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #f1f1f1;
+      font-size: 1rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #9fa6ff;
+    }
+
+    .nav-cta {
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      box-shadow: 0 0 20px rgba(63, 63, 217, 0.28);
+      font-weight: 700;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.72)),
+        url("images/fullnew.png") center/cover no-repeat;
+      transform: scale(1.04);
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 80px 24px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      padding: 10px 16px;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: #d9dcff;
+      font-size: 0.92rem;
+      letter-spacing: 0.5px;
+    }
+
+    .hero h1 {
+      margin: 0 0 18px 0;
+      font-family: 'Saira Stencil One', sans-serif;
+      font-size: clamp(2.6rem, 7vw, 5.6rem);
+      line-height: 1.02;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 0 0 40px rgba(63, 63, 217, 0.18);
+    }
+
+    .hero h1 span {
+      color: #9fa6ff;
+    }
+
+    .hero-lead {
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      line-height: 1.8;
+      color: #e4e4e4;
+      max-width: 720px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 24px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      box-shadow: 0 10px 30px rgba(63, 63, 217, 0.32);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      color: white;
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.14);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.11);
+      transform: translateY(-2px);
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 760px;
+    }
+
+    .hero-point {
+      padding: 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-point strong {
+      display: block;
+      font-size: 1.02rem;
+      margin-bottom: 6px;
+    }
+
+    .hero-point span {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .hero-panel {
+      position: relative;
+    }
+
+    .floating-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+    }
+
+    .floating-card-top {
+      padding: 24px 24px 8px;
+    }
+
+    .floating-card-top h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.5rem;
+    }
+
+    .floating-card-top p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .floating-card-image {
+      height: 280px;
+      object-fit: cover;
+      width: 100%;
+      filter: brightness(0.9);
+    }
+
+    .floating-card-bottom {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 18px 20px 22px;
+    }
+
+    .micro-stat {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .micro-stat strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .micro-stat span {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 90px 24px;
+    }
+
+    .section-head {
+      max-width: 840px;
+      margin: 0 auto 40px;
+      text-align: center;
+    }
+
+    .section-head h2 {
+      margin: 0 0 16px;
+      font-family: 'Saira Stencil One', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: 1px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1.08rem;
+    }
+
+    .feature-band {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .feature-chip {
+      background: linear-gradient(180deg, #141414, #0d0d0d);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .feature-chip:hover {
+      transform: translateY(-6px);
+      border-color: rgba(63, 63, 217, 0.4);
+    }
+
+    .feature-chip h3 {
+      margin: 0 0 10px;
+      font-size: 1.12rem;
+    }
+
+    .feature-chip p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.96rem;
+    }
+
+    .process-wrap {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .showcase-card,
+    .process-card,
+    .cta-panel,
+    .lux-card {
+      background: linear-gradient(180deg, #121212, #0d0d0d);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .showcase-card img {
+      height: 100%;
+      min-height: 560px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .process-card {
+      padding: 34px;
+    }
+
+    .process-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .step-num {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-family: 'Saira Stencil One', sans-serif;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      box-shadow: 0 0 22px rgba(63,63,217,0.25);
+    }
+
+    .step h3 {
+      margin: 0 0 8px;
+      font-size: 1.14rem;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .lux-card {
+      position: relative;
+      min-height: 360px;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .lux-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(63,63,217,0.35);
+    }
+
+    .lux-card img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      filter: brightness(0.48);
+      transition: transform 0.35s ease, filter 0.35s ease;
+    }
+
+    .lux-card:hover img {
+      transform: scale(1.06);
+      filter: brightness(0.38);
+    }
+
+    .lux-card-content {
+      position: absolute;
+      inset: 0;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      text-align: left;
+      background: linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0.16));
+    }
+
+    .lux-card-content h3 {
+      margin: 0 0 10px;
+      font-size: 1.45rem;
+    }
+
+    .lux-card-content p {
+      margin: 0 0 16px;
+      color: #e7e7e7;
+      line-height: 1.7;
+    }
+
+    .bullet-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .bullet {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.05);
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .cta-strip {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .cta-strip img {
+      height: 420px;
+      width: 100%;
+      object-fit: cover;
+      filter: brightness(0.38);
+    }
+
+    .cta-strip-content {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 32px;
+    }
+
+    .cta-strip-inner {
+      max-width: 920px;
+    }
+
+    .cta-strip-inner h2 {
+      margin: 0 0 16px;
+      font-family: 'Saira Stencil One', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      line-height: 1.1;
+    }
+
+    .cta-strip-inner p {
+      margin: 0 auto 24px;
+      max-width: 820px;
+      color: #f1f1f1;
+      line-height: 1.8;
+      font-size: 1.08rem;
+    }
+
+    .footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: #060606;
+      padding: 34px 24px;
+    }
+
+    .footer-wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer p {
+      margin: 6px 0;
+      color: var(--muted);
+    }
+
+    .glow-orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(40px);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .orb-1 {
+      width: 180px;
+      height: 180px;
+      background: rgba(63, 63, 217, 0.30);
+      top: 10%;
+      left: 4%;
+      animation: floaty 8s ease-in-out infinite;
+    }
+
+    .orb-2 {
+      width: 220px;
+      height: 220px;
+      background: rgba(110, 110, 255, 0.22);
+      bottom: 8%;
+      right: 6%;
+      animation: floaty 10s ease-in-out infinite;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(-18px) translateX(8px); }
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .process-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-band {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-panel {
+        max-width: 760px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        width: 100%;
+        gap: 12px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-grid {
+        padding-top: 50px;
+        padding-bottom: 50px;
+      }
+
+      .hero-point,
+      .micro-stat,
+      .feature-chip,
+      .bullet {
+        border-radius: 14px;
+      }
+
+      .hero-points,
+      .feature-band,
+      .services-grid,
+      .bullet-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-card-image,
+      .showcase-card img,
+      .cta-strip img {
+        min-height: 0;
+        height: 280px;
+      }
+
+      .hero h1 {
+        letter-spacing: 1px;
+      }
+
+      .section {
+        padding: 70px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a href="index.html" class="brand">
+        <img src="images/Justone.PNG" alt="Just One Plumber logo">
+        <div class="brand-text">
+          <strong>Just One Plumber</strong>
+          <span>New Build Plumbing • Start to Finish</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+        <a href="faq.html">FAQ</a>
+        <a href="tel:623-385-6301" class="nav-cta">Call 623-385-6301</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <div class="hero-grid">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">Creating Your Dream Home? Plumbing Start to Finish.</div>
+        <h1>New Build <span>Plumbing</span></h1>
+        <p class="hero-lead">
+          From underground planning and rough-in to final trim, fixture installation, and turnover,
+          Just One Plumber helps bring your vision to life with professional new construction plumbing
+          designed for long-term performance, reliability, and peace of mind.
+        </p>
+
+        <div class="hero-actions">
+          <a href="contact.html" class="btn btn-primary">Start Your Project</a>
+          <a href="#process" class="btn btn-secondary">See the Process</a>
+        </div>
+
+        <div class="hero-points">
+          <div class="hero-point">
+            <strong>Start to Finish</strong>
+            <span>Planning, rough-in, trim, fixtures, and final walkthrough support.</span>
+          </div>
+          <div class="hero-point">
+            <strong>Built for Performance</strong>
+            <span>Thoughtful plumbing layouts designed for daily use and long-term durability.</span>
+          </div>
+          <div class="hero-point">
+            <strong>Professional Coordination</strong>
+            <span>Reliable communication through every phase of your build.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-panel reveal">
+        <div class="floating-card">
+          <div class="floating-card-top">
+            <h3>What This Page Is About</h3>
+            <p>
+              A high-end plumbing experience for new construction projects where details matter,
+              timelines matter, and the finished result needs to feel right the first time.
+            </p>
+          </div>
+
+          <img src="images/newcon.png" alt="New construction plumbing" class="floating-card-image">
+
+          <div class="floating-card-bottom">
+            <div class="micro-stat">
+              <strong>Planning & Layout</strong>
+              <span>Smarter plumbing placement for cleaner, more functional living spaces.</span>
+            </div>
+            <div class="micro-stat">
+              <strong>Rough-In Excellence</strong>
+              <span>Accurate installation where the structure behind the walls matters most.</span>
+            </div>
+            <div class="micro-stat">
+              <strong>Final Trim</strong>
+              <span>Fixtures, clean finishes, and a professional polished final result.</span>
+            </div>
+            <div class="micro-stat">
+              <strong>Dream Home Ready</strong>
+              <span>A system built to serve your home beautifully and dependably.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head reveal">
+      <h2>Why New Build Plumbing Matters</h2>
+      <p>
+        Plumbing is one of the core systems of your home. When it is thoughtfully planned, expertly installed,
+        and finished with care, your entire home functions better — from kitchens and baths to laundry,
+        outdoor connections, water heating, and everyday comfort.
+      </p>
+    </div>
+
+    <div class="feature-band">
+      <div class="feature-chip reveal">
+        <h3>Smarter Layout Decisions</h3>
+        <p>Good plumbing begins with clear planning that supports the way your home is meant to live and flow.</p>
+      </div>
+      <div class="feature-chip reveal">
+        <h3>Cleaner Coordination</h3>
+        <p>Professional new build work means cleaner sequencing with other trades and fewer headaches later.</p>
+      </div>
+      <div class="feature-chip reveal">
+        <h3>Long-Term Dependability</h3>
+        <p>The right work done now helps protect the comfort, value, and function of your finished home.</p>
+      </div>
+      <div class="feature-chip reveal">
+        <h3>Detail-Driven Finish</h3>
+        <p>Final fixtures and trim should feel precise, polished, and worthy of the home you are building.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="process">
+    <div class="section-head reveal">
+      <h2>The Process</h2>
+      <p>
+        A new build should not feel confusing. This process is designed to keep your project moving with clarity,
+        quality, and confidence from the earliest stage to the final finished details.
+      </p>
+    </div>
+
+    <div class="process-wrap">
+      <div class="showcase-card reveal">
+        <img src="images/fullnew.png" alt="Professional new build plumbing work">
+      </div>
+
+      <div class="process-card reveal">
+        <div class="process-list">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div>
+              <h3>Planning & Consultation</h3>
+              <p>
+                We start with the vision, layout, fixtures, and system needs of your home so the plumbing supports the build from day one.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">02</div>
+            <div>
+              <h3>Underground & Rough-In</h3>
+              <p>
+                Core plumbing infrastructure is installed carefully and accurately so everything behind the walls is built with confidence.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">03</div>
+            <div>
+              <h3>Fixture & Trim Installation</h3>
+              <p>
+                Once the home is ready, fixtures, valves, finishes, and visible plumbing details are installed with clean, professional precision.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-num">04</div>
+            <div>
+              <h3>Final Walkthrough</h3>
+              <p>
+                We help make sure the system is functioning properly, looks right, and is ready for the home to be lived in and enjoyed.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head reveal">
+      <h2>What We Can Help With</h2>
+      <p>
+        A new construction plumbing project includes more than just pipe placement. The goal is a complete system
+        that fits the home beautifully and performs reliably for years to come.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <article class="lux-card reveal">
+        <img src="images/plumb5.png" alt="Kitchen and bath plumbing">
+        <div class="lux-card-content">
+          <h3>Kitchen & Bath Plumbing</h3>
+          <p>Thoughtful plumbing support for the spaces that define daily life and comfort inside the home.</p>
+        </div>
+      </article>
+
+      <article class="lux-card reveal">
+        <img src="images/waterheater.png" alt="Water heater and utility plumbing">
+        <div class="lux-card-content">
+          <h3>Water Heater & Utility Systems</h3>
+          <p>Dependable setup for heating, utility connections, and the systems that keep the home running smoothly.</p>
+        </div>
+      </article>
+
+      <article class="lux-card reveal">
+        <img src="images/trim.jpg" alt="Final trim and fixture installation">
+        <div class="lux-card-content">
+          <h3>Final Trim & Fixtures</h3>
+          <p>Clean, polished finishing work that helps the completed home feel intentional and high quality.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="bullet-grid" style="margin-top: 28px;">
+      <div class="bullet reveal">Custom fixture planning and layout coordination</div>
+      <div class="bullet reveal">Rough-in plumbing designed for long-term function</div>
+      <div class="bullet reveal">Professional finish work for kitchens, baths, and utility areas</div>
+      <div class="bullet reveal">Dependable communication throughout the build process</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="cta-strip reveal">
+      <img src="images/plumb3.jpg" alt="Luxury new home plumbing service">
+      <div class="cta-strip-content">
+        <div class="cta-strip-inner">
+          <h2>Creating Your Dream Home Starts Below the Surface</h2>
+          <p>
+            Great plumbing is not just about what you see at the end. It is about the quality behind the walls,
+            the precision in every phase, and the confidence that your home is being built with care from the ground up.
+          </p>
+          <div class="hero-actions" style="justify-content:center; margin-bottom:0;">
+            <a href="contact.html" class="btn btn-primary">Request a Consultation</a>
+            <a href="tel:623-385-6301" class="btn btn-secondary">Call Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-wrap">
+      <div>
+        <p><strong>Just One Plumber, LLC</strong></p>
+        <p>New Build Plumbing • Valley Wide</p>
+      </div>
+
+      <div>
+        <p>Phone: <a href="tel:623-385-6301">623-385-6301</a></p>
+        <p>Email: <a href="mailto:just1plumberllc@gmail.com">just1plumberllc@gmail.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const revealItems = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealItems.forEach((item) => observer.observe(item));
+
+    const heroBg = document.querySelector('.hero-bg');
+    window.addEventListener('scroll', function() {
+      const scrollY = window.scrollY;
+      if (heroBg) {
+        heroBg.style.transform = `scale(1.04) translateY(${scrollY * 0.12}px)`;
+      }
+    });
+  </script>
+</body>
+</html>
