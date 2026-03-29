@@ -340,23 +340,43 @@ main {
     text-align: center;
 }
 
-.services-title {
-    font-family: 'Saira Stencil One', sans-serif;
-    font-size: 30px;
-    margin-bottom: 10px;
-    
+
+.services-hero {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto 40px auto;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 5px 5px 12px gray;
 }
 
-.services-intro {
-    max-width: 700px;
-    margin: 0 auto 40px auto;
-    font-size: 20px;
-    line-height: 1.5;
+.services-hero-image {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(60%);
 }
-.services-subtext {
-    max-width: 750px;
-    margin: 0 auto 25px auto;
-    font-size: 18px;
+
+.services-hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    color: white;
+    text-align: center;
+}
+
+.services-hero-text h1 {
+    font-family: 'Saira Stencil One', sans-serif;
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.services-hero-text p {
+    font-size: 24px;
     line-height: 1.5;
 }
 .services-grid {
@@ -435,7 +455,93 @@ main {
     background-color: rgb(63, 63, 217);
     color: white;
 }
+.services-trust-banner {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 45px auto 25px auto;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 5px 5px 12px gray;
+}
 
+.services-trust-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(50%);
+}
+
+.services-trust-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+}
+
+.services-trust-overlay p {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 0;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.45);
+}
+.services-callout-box {
+    max-width: 950px;
+    margin: 50px auto 20px auto;
+    padding: 30px;
+    background-color: rgb(245, 245, 245);
+    border-left: 8px solid rgb(63, 63, 217);
+    border-radius: 12px;
+    box-shadow: 5px 5px 10px gray;
+    text-align: center;
+}
+
+.services-callout-box h2 {
+    font-family: 'Saira Stencil One', sans-serif;
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.services-callout-box p {
+    font-size: 20px;
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+.services-callout-box a {
+    color: rgb(63, 63, 217);
+    text-decoration: none;
+    font-weight: bold;
+}
+.services-hero-text h1 {
+    font-family: 'Saira Stencil One', sans-serif;
+    font-size: 68px;
+    margin-bottom: 15px;
+    letter-spacing: 10px;
+}
+
+.services-hero-text p {
+    font-size: 22px;
+    line-height: 1.6;
+    max-width: 850px;
+    margin: 0 auto;
+}
+@media (max-width: 800px) {
+    .services-trust-image {
+        height: 170px;
+    }
+
+    .services-trust-overlay p {
+        font-size: 20px;
+    }
+    
+}
 /*NOT SURE IF THIS WILL HELP THE HEADER*/
 .site-header {
     display: flex;
