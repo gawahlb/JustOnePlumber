@@ -1156,7 +1156,7 @@ main {
 
 @media (max-width: 800px) {
     .home-final-banner-image {
-        height: 260px;
+        min-height: 330px;
     }
 
     .home-final-banner-overlay h2 {
@@ -1308,7 +1308,14 @@ main {
         min-height: 600px;
         overflow: visible;
         margin-bottom: 50px;
-        animation: slideInOut 12s linear infinite;
+    }
+
+    .hero-button {
+        background-color: white ;
+    }
+
+    .secondary-button:visited {
+        color: blue;
     }
 
     .review-box {
