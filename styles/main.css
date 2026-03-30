@@ -882,7 +882,7 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
-    max-width: 1100px;
+    max-width: 100%;
     margin: 30px auto;
     align-items: stretch;
     padding: 0 20px;
@@ -931,7 +931,7 @@ main {
 .contact-two-column .contact-box {
     grid-column: auto;
     width: 100%;
-    max-width: 500px;
+    max-width: 460px;
     justify-self: stretch;
     align-self: stretch;
 }
@@ -1298,18 +1298,10 @@ main {
         text-align: center;
     }
 
-    
-
-    /*.navbar #links.open {
-        display: flex !important;
-        max-height: 500px;
-        transition: .2s ease-in-out;
-    }*/
-
     #links.open {
-    max-height: 400px; /* big enough for all links */
-    opacity: 1;
-}
+        max-height: 400px; /* big enough for all links */
+        opacity: 1;
+    }
 
     .navbar a.icon {
         display: block !important;
