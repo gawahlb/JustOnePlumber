@@ -114,25 +114,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 function hMenu() {
-    var x = document.getElementById("links");
+    event.stopPropagation();
+    
+    var menu = document.getElementById("links");
     var icon = document.getElementById("hamburger-icon");
-    x.classList.toggle("open");
-    icon.classList.toggle("open");
-};
+    var header = document.querySelector(".site-header");
 
-document.addEventListener('click', function(event) {
+    menu.classList.toggle("open");
+    icon.classList.toggle("open");
+    header.classList.toggle("menu-open");
+}
+
+document.addEventListener('click', function (event) {
     const menu = document.getElementById("links");
     const icon = document.getElementById("hamburger-icon");
-    const navContainer = document.querySelector(".navbar");
+    const header = document.querySelector(".site-header");
 
-    if (menu && menu.classList.contains("open")) {
-        if (!navContainer.contains(event.target)) {
-            menu.classList.remove("open");
-            icon.classList.remove("open");
-            menu.style.maxHeight = null;
-        }
+    // If menu is open AND click is outside the header
+    if (
+        menu.classList.contains("open") &&
+        !header.contains(event.target)
+    ) {
+        menu.classList.remove("open");
+        icon.classList.remove("open");
+        header.classList.remove("menu-open");
     }
-    const heroButtons = document.querySelectorAll(".hero-button");
+});
+
+const heroButtons = document.querySelectorAll(".hero-button");
 
 heroButtons.forEach(function(button) {
     button.addEventListener("click", function(e) {
@@ -155,5 +164,4 @@ heroButtons.forEach(function(button) {
             ripple.remove();
         }, 600);
     });
-});
 });
