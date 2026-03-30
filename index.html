@@ -20,7 +20,8 @@
             <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Saira+Stencil+One&display=swap" rel="stylesheet">
     </head>
     <body>
-        <header>
+        <!---<header class="site-header">
+            <div class="top-bar">
             <a href="index.html" class="logo-link">
                 <img src="images/Justone.PNG" alt="Just One Logo" class="logo">
             </a>
@@ -38,7 +39,29 @@
                     </div>
                 </a>
             </nav>
-        </header>
+        </header>-->
+
+        <header class="site-header">
+    <div class="top-bar">
+        <a href="index.html" class="logo-link">
+            <img src="images/Justone.PNG" class="logo">
+        </a>
+
+        <div class="icon" onclick="hMenu()">
+            <div id="hamburger-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <nav id="links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="faq.html" class="nav-link">FAQ</a>
+    </nav>
+</header>
 <section class="hero-split">
     <div class="hero-split-left">
         <h1>Just One Plumber</h1>
