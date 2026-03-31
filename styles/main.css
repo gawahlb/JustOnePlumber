@@ -9,7 +9,7 @@ header {
 
 .nav-link {
     text-decoration: none;
-    color: black;
+    color: white;
     font-size: 25px;
     padding: 8px 12px;
     border-radius: 8px;
@@ -66,7 +66,7 @@ header {
 }
 
 html, body {
-    overflow-x: visible;
+    overflow-x: hidden;
     margin: auto;
 }
 
@@ -74,6 +74,8 @@ html {
     max-width: 100%;
     margin: 0;
     height: 100%;
+    background-color: black;
+    color: white;
 }
 
 body {
@@ -203,7 +205,6 @@ footer {
         margin: 30px 50px;
         font-size: 20px;
         font-weight: 800;
-        box-shadow: 5px 5px 5px gray;
         max-width: 200px;
     }
 
@@ -217,8 +218,6 @@ footer {
     transform: scale(0.97);
 }  
 
-/* bruh*/
-/* Reviews Carousel */
 .reviews {
     grid-column: 1/3;
     margin: 50px auto;
@@ -239,7 +238,6 @@ footer {
     border: 1px solid black;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 5px 5px 5px gray;
     animation: slideInOut 12s linear infinite; 
     grid-column: 1/3;
 }
@@ -296,10 +294,9 @@ main {
     padding: 20px;
     width: 100%;
     max-width: 500px;
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(94, 94, 94);
     border: 1px solid black;
     border-radius: 10px;
-    box-shadow: 5px 5px 5px gray;
     grid-column: 1/3;
     justify-self: center;
     margin-bottom: 30px;
@@ -343,7 +340,6 @@ main {
     margin: 20px auto 40px auto;
     border-radius: 14px;
     overflow: hidden;
-    box-shadow: 5px 5px 12px gray;
 }
 
 .services-hero-image {
@@ -383,12 +379,11 @@ main {
 }
 
 .service-card {
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(94, 94, 94);
     border: 1px solid black;
     border-top: 6px solid rgb(63, 63, 217);
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 5px 5px 5px gray;
     transition: transform 0.3s ease;
     max-height: 500px;
 }
@@ -423,7 +418,6 @@ main {
     background-color: rgb(245, 245, 245);
     border-left: 8px solid rgb(63, 63, 217);
     border-radius: 10px;
-    box-shadow: 5px 5px 5px gray;
 }
 
 .services-extra h2 {
@@ -438,7 +432,6 @@ main {
     background-color: rgb(221, 221, 221);
     border: 1px solid black;
     border-radius: 10px;
-    box-shadow: 5px 5px 5px gray;
 }
 
 .service-button {
@@ -457,7 +450,6 @@ main {
     margin: 45px auto 25px auto;
     border-radius: 14px;
     overflow: hidden;
-    box-shadow: 5px 5px 12px gray;
 }
 
 .services-trust-image {
@@ -489,10 +481,9 @@ main {
     max-width: 950px;
     margin: 50px auto 20px auto;
     padding: 30px;
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(94, 94, 94);
     border-left: 8px solid rgb(63, 63, 217);
     border-radius: 12px;
-    box-shadow: 5px 5px 10px gray;
     text-align: center;
 }
 
@@ -562,12 +553,12 @@ main {
 }
 
 .hero-split-left {
-    background-color: rgb(245, 245, 245);
     border-left: 8px solid rgb(63, 63, 217);
     border-radius: 12px;
-    box-shadow: 5px 5px 10px gray;
     padding: 35px;
     text-align: left;
+    background-color: rgb(94, 94, 94);
+    color: white;
 }
 
 .hero-split-left h1 {
@@ -599,7 +590,6 @@ main {
     height: 460px;
     object-fit: cover;
     border-radius: 12px;
-    box-shadow: 5px 5px 10px gray;
 }
 .hero-buttons {
     display: flex;
@@ -738,7 +728,6 @@ main {
     background-color: rgb(245, 245, 245);
     border: 1px solid black;
     border-radius: 10px;
-    box-shadow: 5px 5px 5px gray;
     overflow: hidden;
 }
 
@@ -795,15 +784,13 @@ main {
     height: 300px;
     object-fit: cover;
     border-radius: 12px;
-    box-shadow: 5px 5px 10px gray;
 }
 
 .faq-side-box {
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(94, 94, 94);
     border-left: 8px solid rgb(63, 63, 217);
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 5px 5px 10px gray;
     text-align: left;
 }
 
@@ -829,7 +816,6 @@ main {
     height: 260px;
     object-fit: cover;
     border-radius: 12px;
-    box-shadow: 5px 5px 10px gray;
     margin-bottom: 25px;
 }
 
@@ -890,10 +876,9 @@ main {
 }
 
 .contact-welcome-box {
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(94, 94, 94);
     border-left: 8px solid rgb(63, 63, 217);
     border-radius: 10px;
-    box-shadow: 5px 5px 5px gray;
     padding: 25px;
     text-align: left;
     display: flex;
@@ -949,7 +934,6 @@ main {
     height: 280px;
     object-fit: cover;
     border-radius: 12px;
-    box-shadow: 5px 5px 10px gray;
     display: block;
 }
 
@@ -971,7 +955,7 @@ main {
     right: 20px;
     margin: 0;
     color: white;
-    z-index: 2;
+    z-index: 1;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
@@ -985,7 +969,7 @@ main {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(245, 245, 245, 0.96);
+    background-color: rgb(94, 94, 94);
     padding: 20px;
     text-align: left;
     transform: translateY(100%);
@@ -1033,11 +1017,10 @@ main {
 }
 
 .review-box {
-    background: linear-gradient(to bottom, rgb(250, 250, 250), rgb(242, 242, 242));
+    background-color: rgb(94, 94, 94);
     border-left: 8px solid rgb(63, 63, 217);
     border-radius: 14px;
     padding: 35px 30px;
-    box-shadow: 5px 5px 12px gray;
     max-width: 900px;
     margin: 0 auto;
     animation: none;
@@ -1046,7 +1029,7 @@ main {
 
 .review-stars {
     font-size: 28px;
-    color: rgb(63, 63, 217);
+    color: gold;
     margin-bottom: 20px;
     letter-spacing: 4px;
 }
@@ -1079,7 +1062,6 @@ main {
     color: white;
     font-size: 22px;
     cursor: pointer;
-    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .review-btn:hover {
@@ -1112,7 +1094,6 @@ main {
     margin: 50px auto;
     border-radius: 14px;
     overflow: hidden;
-    box-shadow: 5px 5px 12px gray;
 }
 
 .home-final-banner-image {
@@ -1177,6 +1158,7 @@ main {
         transform: translateY(0);
         position: static;
         background-color: rgb(245, 245, 245);
+        z-index: 2000;
     }
 
     .service-reveal-card img {
@@ -1478,7 +1460,6 @@ main {
    .contact-box {
     width: 100%;
     max-width: 500px;
-    min-width: 0;
     align-self: center;
     box-sizing: border-box;
 }
