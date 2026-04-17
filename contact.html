@@ -3,12 +3,12 @@
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Just One Plumber</title>
-        <meta name="description" content="Just One Plumber Contact Page">
+        <title>Contact Us | Just One Plumber</title>
+        <meta name="description" content="Contact Just One Plumber for dependable plumbing service throughout the Valley. Call 623-385-6301 or send us a message.">
             <meta name="author" content="Superstition Web Developers">
             <meta property="og:title" content="Just One Plumber Contact Page">
             <meta property="og:description" content="Contact Page for Just One Plumber. Click here to learn more!">
-            <meta property="og:image" content="">
+            <meta property="og:image" content="images/Justone.PNG">
             <link rel="stylesheet" href="styles/main.css">
             <link rel="apple-touch-icon" sizes="180x180" href="#">
             <link rel="icon" type="image/png" sizes="32x32" href="#">
@@ -27,7 +27,7 @@
     <header class="site-header">
     <div class="top-bar">
         <a href="index.html" class="logo-link">
-            <img src="images/Justone.PNG" class="logo">
+            <img src="images/Justone.PNG" class="logo" alt="Just One Plumber Logo">
         </a>
 
         <div class="icon" onclick="hMenu()">
@@ -87,10 +87,11 @@
                 <input type="text" id="subject" name="subject">
 
                 <label for="contact">Your Email or Phone</label>
-                <input type="text" id="contact" name="contact">
+                <input type="text" id="contact" name="contact" required placeholder="How can we reach you?">
 
                 <label for="description">Description</label>
-                <textarea id="description" name="description"></textarea>
+                <textarea id="description" name="description" required placeholder="Describe your plumbing issue..."></textarea>
+
 
                 <input type="submit" value="Send">
             </form>
