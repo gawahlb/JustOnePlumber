@@ -522,9 +522,15 @@ main {
 }
 
 .services-callout-box a {
-    color: rgb(63, 63, 217);
-    text-decoration: none;
+    color: rgb(255, 200, 0);
+    text-decoration: underline;
+    text-underline-offset: 4px;
     font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.services-callout-box a:hover {
+    color: rgb(255, 225, 80);
 }
 .services-hero-text h1 {
     font-family: 'Saira Stencil One', sans-serif;
@@ -539,15 +545,16 @@ main {
     max-width: 850px;
     margin: 0 auto;
 }
+
 @media (max-width: 800px) {
-    .services-trust-image {
-        height: 170px;
+    .services-hero-text h1 {
+        font-size: 30px;
+        letter-spacing: 2px;
     }
 
-    .services-trust-overlay p {
-        font-size: 20px;
+    .services-hero-text p {
+        font-size: 15px;
     }
-    
 }
 /*NOT SURE IF THIS WILL HELP THE HEADER*/
 /*.site-header {
@@ -931,9 +938,16 @@ main {
 }
 
 .contact-info-box a {
-    text-decoration: none;
+    color: rgb(255, 200, 0);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    font-weight: bold;
+    transition: color 0.2s ease;
 }
 
+.contact-info-box a:hover {
+    color: rgb(255, 225, 80);
+}
 .contact-two-column .contact-box {
     grid-column: auto;
     width: 100%;
@@ -1114,11 +1128,13 @@ main {
     margin: 50px auto;
     border-radius: 14px;
     overflow: hidden;
+    min-height: 380px;
 }
 
 .home-final-banner-image {
     width: 100%;
-    height: 380px;
+    height: 100%;
+    min-height: 380px;
     object-fit: cover;
     display: block;
     filter: brightness(50%);
@@ -1198,8 +1214,18 @@ header {
     position: relative;
     width: 100%;
     display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.top-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    padding: 10px 16px;
+    width: 100%;
+    padding: 10px 56px;
+    box-sizing: border-box;
 }
 
 .logo-link {
@@ -1284,25 +1310,31 @@ header {
         transition: .2s ease-in-out;
         left: 0;
     }
+#hamburger-icon span:nth-child(1) {
+    top: 0px;
+}
 
-    #hamburger-icon span:nth-child(1) {
-        top: 0px;
-    }
+#hamburger-icon span:nth-child(2) {
+    top: 10px;
+}
 
-    #hamburger-icon span:nth-child(2) {
-        top: 8px;
-    }
+#hamburger-icon span:nth-child(3) {
+    top: 20px;
+}
 
-    #hamburger-icon.open span:nth-child(1) {
-        top: 8px;
-        transform: rotate(45deg);
-    }
+#hamburger-icon.open span:nth-child(1) {
+    top: 10px;
+    transform: rotate(45deg);
+}
 
-    #hamburger-icon.open span:nth-child(2) {
-        top: 8px;
-        transform: rotate(-45deg);
-    }
+#hamburger-icon.open span:nth-child(2) {
+    opacity: 0;
+}
 
+#hamburger-icon.open span:nth-child(3) {
+    top: 10px;
+    transform: rotate(-45deg);
+}
     /* Hero split */
     .hero-split {
         grid-template-columns: 1fr;
@@ -1497,38 +1529,57 @@ header {
         gap: 12px;
     }
 
-    /* Contact page */
+
+/* Contact page */
+    .contact-page-layout {
+        grid-column: 1 / 2;
+        width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
     .contact-two-column {
         grid-template-columns: 1fr;
+        padding: 0 15px;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100vw;
+        margin: 20px auto;
+        overflow: hidden;
+    }
+
+    .contact-welcome-box {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
     }
 
     .contact-two-column .contact-box {
+        max-width: 100%;
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .contact-info-box {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+
+    .contact-bottom-image-section {
+        padding: 0 15px;
+        box-sizing: border-box;
+        width: 100%;
         max-width: 100%;
     }
 
     .contact-bottom-image {
         height: 200px;
-    }
-
-    .contact-info {
-        font-size: 22px;
-        margin: 20px 15px 30px 15px;
-        text-align: left;
-        align-self: center;
-    }
-
-    .contact-box {
         width: 100%;
-        max-width: 500px;
-        min-width: 0;
-        align-self: center;
         box-sizing: border-box;
     }
-
-    .contact-info a {
-        text-decoration: none;
-    }
-
     /* Services page */
     .services-home-button {
         margin-bottom: 50px;
@@ -1572,6 +1623,15 @@ header {
         font-size: 20px;
     }
 
+    .services-hero-image {
+        height: 220px;
+    }
+
+    .services-hero-text {
+        width: 90%;
+        padding: 10px;
+    }
+}
     /* FAQ page */
     .faq-layout {
         grid-template-columns: 1fr;
@@ -1601,7 +1661,18 @@ header {
     .faq-side-box p {
         font-size: 18px;
     }
+ .faq-bottom-buttons a {
+        margin: 20px 10px;
+    }
 
+    .faq-bottom-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 20px;
+    }
     /* Footer */
     footer {
         text-align: center;
@@ -1620,6 +1691,4 @@ header {
         text-decoration: none;
         color: white;
     }
-
-}
 
