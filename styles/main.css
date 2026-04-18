@@ -77,14 +77,6 @@ header {
     border-radius: 8px;
     margin-top: 20px;
 }
-.repair {
-    display: none;
-    position: absolute;
-    top: 0;
-    z-index: -1;
-    margin: 0;
-    width: 1800px;
-}
 
 html, body {
     overflow-x: hidden;
@@ -103,7 +95,7 @@ html {
 body {
     font-family: 'Roboto', sans-serif;
     display: grid;
-    grid-template-rows: auto auto auto auto auto auto auto .15fr;
+    grid-template-rows: auto;
     grid-template-columns: 1fr 3fr;
     height: 100%;
     text-align: center;
@@ -133,8 +125,6 @@ body {
 
 .contact-info {
     display: inline-block;
-    align-items: center;
-    margin: 100px 0 200px 0;
     text-align: center;
     margin: auto;
 }
@@ -149,13 +139,6 @@ body {
     text-align: left;
     display: inline-block;
     margin-bottom: 200px;
-}
-
-.services-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    grid-column: 2/3;
 }
 
 .services-home-button {
@@ -386,16 +369,6 @@ main {
     text-align: center;
 }
 
-.services-hero-text h1 {
-    font-family: 'Saira Stencil One', sans-serif;
-    font-size: 48px;
-    margin-bottom: 15px;
-}
-
-.services-hero-text p {
-    font-size: 24px;
-    line-height: 1.5;
-}
 .services-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -757,7 +730,7 @@ main {
 }
 
 .faq-item {
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(94, 94, 94);
     border: 1px solid black;
     border-radius: 10px;
     overflow: hidden;
@@ -889,6 +862,7 @@ main {
     .faq-side-box p {
         font-size: 18px;
     }
+    
 }
 /* Contact page new layout */
 .contact-page-layout {
@@ -1636,7 +1610,7 @@ header {
         width: 90%;
         padding: 10px;
     }
-}
+
     /* FAQ page */
     .faq-layout {
         grid-template-columns: 1fr;
@@ -1697,3 +1671,4 @@ header {
         color: white;
     }
 
+}
